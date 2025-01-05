@@ -15,7 +15,7 @@ cells.forEach((cell) => {
                 player = 2;
             } else {
                 cell.innerText = 'X';
-                cell.style.color = "#00ffc";
+                cell.style.color = "#00ffc6";
                 player = 1;
             }
             cell.disabled = true;
