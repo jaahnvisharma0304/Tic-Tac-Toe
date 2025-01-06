@@ -3,7 +3,6 @@ let closepopup = document.querySelector("#closePopup");
 closepopup.addEventListener("click", () => {
     popup.style.display = "none";
 })
-
 let cells = document.querySelectorAll(".cell");
 let player = 1;
 cells.forEach((cell) => {
@@ -22,6 +21,19 @@ cells.forEach((cell) => {
             cell.classList.add("taken"); 
             checkWinner();
         }
+        // Check for draw
+        // Check for draw
+        let allTaken = true;
+        cells.forEach((c) => {
+            if (!c.classList.contains("taken")) {
+                allTaken = false; // If any cell is not taken, it's not a draw
+            }
+        });
+
+        if (allTaken && play.innerText === "Let's Play Tic Tac Toe") { 
+            play.innerText = "Match Draw! :(";
+        }
+
     })  
 })
 let play = document.querySelector("#play");
@@ -42,9 +54,9 @@ const checkWinner = () => {
 
 let reset = document.querySelector(".reset");
 reset.addEventListener("click", ()=>{
+    play.innerText = "Let's Play Tic Tac Toe";
     cells.forEach((cell) => {
         cell.innerText = "";
-        play.innerText = "Let's Play Tic Tac Toe";
         cell.classList.remove("taken");
     })
 })
